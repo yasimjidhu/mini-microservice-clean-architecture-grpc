@@ -102,6 +102,6 @@ Ensure the following secrets are set in your GitHub repository:
 
 ## Usage
 
-Access  this application via the API Gateway URL provided by your Kubernetes service.
+Access the  application via the API Gateway URL provided by your Kubernetes service.
 
 

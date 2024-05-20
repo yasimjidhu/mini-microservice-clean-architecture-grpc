@@ -71,14 +71,13 @@ jobs:
       - name: Configure Kubernetes
         run: |
           mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG_CONTENT }}" | base64 --decode > $HOME/.kube/config
+          echo "${{ secrets.KUBECONFIG_CONTENT1 }}" > $HOME/.kube/config
         
       - name: Deploy to Kubernetes
         env:
-          KUBECONFIG: ${{ github.workspace }}/.kube/config
+          KUBECONFIG: $HOME/.kube/config
         run: |
-          kubectl apply -f ./services/api-gateway/deployment.yaml --kubeconfig=$HOME/.kube/config
-          kubectl apply -f ./services/auth-service/deployment.yaml --kubeconfig=$HOME/.kube/config
-          kubectl apply -f ./services/product-service/deployment.yaml --kubeconfig=$HOME/.kube/config
-          kubectl apply -f ./services/cart-service/deployment.yaml --kubeconfig=$HOME/.kube/config
-        
+          kubectl apply -f ./services/api-gateway/deployment.yaml
+          kubectl apply -f ./services/auth-service/deployment.yaml
+          kubectl apply -f ./services/product-service/deployment.yaml
+          kubectl apply -f ./services/cart-service/deployment.yaml
