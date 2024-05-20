@@ -7,9 +7,15 @@ const {getProduct} = require('../../application/use_cases/getProductDetails')
 const connectDB = require('../database/db');
 const {findAll,findById,save} = require('../repositories/productRepository'); // Ensure this is implemented to handle product data
 
-const PROTO_PATH = path.resolve(__dirname, 'proto', 'product.proto');
+const PROTO_PATH = './src/infrastructure/proto/product.proto'
 
-const packageDefinition = protoLoader.loadSync(PROTO_PATH);
+const packageDefinition = protoLoader.loadSync(PROTO_PATH,{
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true,
+});
 const productProto = grpc.loadPackageDefinition(packageDefinition).products;
 
 

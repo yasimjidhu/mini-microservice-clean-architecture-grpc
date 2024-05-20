@@ -8,8 +8,15 @@ const connectDB = require('../database/db')
 
 const { save, findByEmail } = require('../repositories/userRepository')
 
-const PROTO_PATH = path.resolve(__dirname, '../../proto/auth.proto');
-const packageDefinition = protoLoader.loadSync(PROTO_PATH);
+
+const PROTO_PATH =  './src/infrastructure/proto/auth.proto'
+const packageDefinition = protoLoader.loadSync(PROTO_PATH,{
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true,
+});
 const authProto = grpc.loadPackageDefinition(packageDefinition).auth;
 
 const userRepository = { save, findByEmail }

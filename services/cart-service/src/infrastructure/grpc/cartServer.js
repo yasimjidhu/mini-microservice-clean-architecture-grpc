@@ -10,7 +10,10 @@ const {
 
 require('dotenv').config();
 
-const PROTO_PATH = path.resolve(__dirname, 'proto', 'product.proto');
+
+
+const PROTO_PATH = './src/infrastructure/proto/cart.proto'
+
 const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
     keepCase: true,
     longs: String,
