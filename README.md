@@ -69,10 +69,10 @@
 
 1. **Deploy services to Kubernetes**:
     ```sh
-    kubectl apply -f services/auth-service/deployment.yaml
-    kubectl apply -f services/api-gateway/deployment.yaml
-    kubectl apply -f services/product-service/deployment.yaml
-    kubectl apply -f services/cart-service/deployment.yaml
+    kubectl apply -f ./services/api-gateway/deployment.yaml
+    kubectl apply -f ./services/auth-service/deployment.yaml
+    kubectl apply -f ./services/product-service/deployment.yaml
+    kubectl apply -f ./services/cart-service/deployment.yaml
     ```
 
 2. **Check the status of the deployments**:
