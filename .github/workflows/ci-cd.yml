@@ -70,7 +70,7 @@ jobs:
 
     - name: Deploy to Kubernetes
       run: |
-        kubectl apply -f services/api-gateway/deployment.yaml
-        kubectl apply -f services/auth-service/deployment.yaml
-        kubectl apply -f services/product-service/deployment.yaml
-        kubectl apply -f services/cart-service/deployment.yaml
+        kubectl apply -f ./services/api-gateway/deployment.yaml
+        kubectl apply -f ./services/auth-service/deployment.yaml
+        kubectl apply -f ./services/product-service/deployment.yaml
+        kubectl apply -f ./services/cart-service/deployment.yaml
