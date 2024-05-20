@@ -14,6 +14,7 @@ function validateTokenMiddleware(call,callback,next){
     const userId = decodedToken.userId
     call.request = userId
     console.log(userId)
+    console.log(decodedToken)
 
     next()
 }
