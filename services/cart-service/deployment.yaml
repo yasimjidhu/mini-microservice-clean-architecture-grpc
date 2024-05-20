@@ -1,0 +1,36 @@
+# k8s/cart-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart-service
+  template:
+    metadata:
+      labels:
+        app: cart-service
+    spec:
+      containers:
+      - name: cart-service
+        image: yasimjidhu/cart-service:latest
+        ports:
+        - containerPort: 50053
+        env:
+        - name: CART_MONGODB_URL
+          value: mongodb+srv://dirshadyasim:yasimjidhu-users@users.pzw95dw.mongodb.net/cart-db?retryWrites=true&w=majority&appName=Users
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-service
+spec:
+  selector:
+    app: cart-service
+  ports:
+    - protocol: TCP
+      port: 50053
+      targetPort: 50053

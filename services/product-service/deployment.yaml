@@ -1,0 +1,36 @@
+# k8s/product-service-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: product-service
+  template:
+    metadata:
+      labels:
+        app: product-service
+    spec:
+      containers:
+      - name: product-service
+        image: yasimjidhu/product-service:latest
+        ports:
+        - containerPort: 50052
+        env:
+        - name: PRODUCT_DB_URL
+          value: mongodb+srv://dirshadyasim:yasimjidhu-users@users.pzw95dw.mongodb.net/product-db?retryWrites=true&w=majority&appName=Users
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-service
+spec:
+  selector:
+    app: product-service
+  ports:
+    - protocol: TCP
+      port: 50052
+      targetPort: 50052

@@ -1,0 +1,38 @@
+version: '3'
+services:
+  auth-service:
+    build: ./services/auth-service
+    ports:
+      - "50051:50051"
+    environment:
+      - 'mongodb+srv://dirshadyasim:yasimjidhu-users@users.pzw95dw.mongodb.net/Auth-db?retryWrites=true&w=majority&appName=Users'
+    depends_on:
+      - mongo
+
+  product-service:
+    build: ./services/product-service
+    ports:
+      - "50052:50052"
+    environment:
+      - mongodb+srv://dirshadyasim:yasimjidhu-users@users.pzw95dw.mongodb.net/product-db?retryWrites=true&w=majority&appName=Users
+    depends_on:
+      - mongo
+
+  cart-service:
+    build: ./services/cart-service
+    ports:
+      - "50053:50053"
+    environment:
+      - mongodb+srv://dirshadyasim:yasimjidhu-users@users.pzw95dw.mongodb.net/cart-db?retryWrites=true&w=majority&appName=Users
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:4.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

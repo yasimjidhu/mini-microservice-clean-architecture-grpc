@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package products;
+
+service ProductsService{
+    
+    //add product
+    rpc AddProduct (AddProductRequest) returns (ProductResponse);
+
+    // get allproducts
+    rpc GetAllProducts(GetAllProductsRequest) returns (AllProductsResponse){};
+    // get single product
+    rpc GetSingleProduct(GetSingleProductRequest) returns (ProductData){};
+}
+
+message AddProductRequest{
+    string productName = 1;
+    string category = 2;
+    float price = 3;
+    int32 stock = 4;
+}
+
+message ProductResponse{
+  string id = 1;
+  string productName = 2;
+  string category = 3;
+  float price = 4;
+  int32 stock = 5;
+}
+
+message GetAllProductsRequest {}
+
+message AllProductsResponse{
+    repeated ProductData products = 1;
+}
+message GetSingleProductRequest{
+    string id = 1;
+}
+message ProductData{
+    string id =1;
+    string productName = 2;
+    string category = 3;
+    int32 price = 4;
+    int32 stock = 5;
+}
