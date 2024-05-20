@@ -30,28 +30,28 @@ jobs:
             - name: Build and push api-gateway
               uses: docker/build-push-action@v2
               with:
-                context: ./services/api-gateway
+                context: ../../services/api-gateway
                 push: true
                 tags: ${{secrets.DOCKER_USERNAME}}/api-gateway:latest
 
             - name: Build and push auth-service
               uses: docker/build-push-action@v2
               with:
-                context: ./services/auth-service
+                context: ../../services/auth-service
                 push: true
                 tags: ${{secrets.DOCKER_USERNAME}}/auth-service:latest
 
             - name: Build and push product-service
               uses: docker/build-push-action@v2
               with:
-                context: ./services/product-service
+                context: ../../services/product-service
                 push: true
                 tags: ${{secrets.DOCKER_USERNAME}}/product-service:latest
 
             - name: Build and push cart-service
               uses: docker/build-push-action@v2
               with:
-                context: ./services/cart-service
+                context: ../../services/cart-service
                 push: true
                 tags: ${{secrets.DOCKER_USERNAME}}/cart-service:latest
 
