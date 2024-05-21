@@ -13,7 +13,7 @@ const connectDB = async ()=> {
     
 })
 .then(()=>{
-    console.log('product service db connected successfully')
+    console.log('product service database connected successfully')
 })
 .catch((err)=>{
     console.log(`error occured in product-service db ${err}`)

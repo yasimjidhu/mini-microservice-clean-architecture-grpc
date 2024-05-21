@@ -20,7 +20,7 @@ spec:
         - containerPort: 50052
         env:
         - name: PRODUCT_DB_URL
-          value: mongodb+srv://dirshadyasim:yasimjidhu-users@users.pzw95dw.mongodb.net/product-db?retryWrites=true&w=majority&appName=Users
+          value: mongodb+srv://dirshadyasim:yasimjidhu@users.pzw95dw.mongodb.net/?retryWrites=true&w=majority&appName=Users 
 
 ---
 apiVersion: v1
