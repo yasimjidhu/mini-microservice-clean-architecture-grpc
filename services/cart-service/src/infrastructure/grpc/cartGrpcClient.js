@@ -33,7 +33,7 @@ async function main() {
         },
         login: async (call, callback) => {
             try {
-                console.log('login reached in grpc server', call.request)
+                
                 const userData = call.request;
                 const { token, user } = await loginUser(userRepository, userData.email);
                 callback(null, { token, user });
