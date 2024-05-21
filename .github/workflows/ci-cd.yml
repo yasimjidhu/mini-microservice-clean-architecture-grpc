@@ -67,15 +67,15 @@ jobs:
         uses: azure/setup-kubectl@v1
         with:
           version: 'v1.18.0'
-      
+        
       - name: Configure Kubernetes
         run: |
-          mkdir -p $HOME/.kube
-          echo "${{ secrets.KUBECONFIG_CONTENT1 }}" > $HOME/.kube/config
+          mkdir -p ~/.kube
+          echo "${{ secrets.KUBECONFIG_CONTENT_NEW }}" | base64 --decode > ~/.kube/config
         
       - name: Deploy to Kubernetes
         env:
-          KUBECONFIG: $HOME/.kube/config
+          KUBECONFIG: ~/.kube/config
         run: |
           kubectl apply -f ./services/api-gateway/deployment.yaml
           kubectl apply -f ./services/auth-service/deployment.yaml
