@@ -8,7 +8,8 @@ const CONNECTDB = async ()=>{
     
     mongoose.connect(dbUrl,{
         useNewUrlParser:true,
-        useUnifiedTopology:true
+        useUnifiedTopology:true,
+        dbName:'cart-db'
     })
     .then(()=>{
         console.log('cart db connected')

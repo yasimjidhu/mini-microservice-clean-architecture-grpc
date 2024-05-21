@@ -8,7 +8,9 @@ const connectDB = async ()=> {
 
     mongoose.connect(dburl,{
     useNewUrlParser:true,
-    useUnifiedTopology:true
+    useUnifiedTopology:true,
+    dbName:'product-db'
+    
 })
 .then(()=>{
     console.log('product service db connected successfully')
