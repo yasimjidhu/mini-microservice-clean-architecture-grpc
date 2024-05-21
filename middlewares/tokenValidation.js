@@ -4,7 +4,7 @@ function validateTokenMiddleware(call,callback,next){
     const token = call.metadata.get('authorization')[0]
 
     if(!token){
-        return callback({code:grpc.status.UNAUTHENTICATED,message:'no token found'})
+        return callback({code:grpc.status.UNAUTHENTICATED,message:'no token found,try again'})
     }
     const decodedToken = verifyToken(token)
 

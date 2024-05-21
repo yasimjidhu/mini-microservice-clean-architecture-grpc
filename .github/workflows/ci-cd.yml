@@ -53,31 +53,3 @@ jobs:
           context: ./services/cart-service
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/cart-service:latest
-
-  deploy:
-    name: Deploy to Kubernetes
-    runs-on: ubuntu-latest
-    needs: build
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'v1.18.0'
-        
-      - name: Configure Kubernetes
-        run: |
-          mkdir -p ~/.kube
-          echo "${{ secrets.KUBECONFIG_CONTENT_NEW }}" | base64 --decode > ~/.kube/config
-        
-      - name: Deploy to Kubernetes
-        env:
-          KUBECONFIG: ~/.kube/config
-        run: |
-          kubectl apply -f ./services/api-gateway/deployment.yaml
-          kubectl apply -f ./services/auth-service/deployment.yaml
-          kubectl apply -f ./services/product-service/deployment.yaml
-          kubectl apply -f ./services/cart-service/deployment.yaml
