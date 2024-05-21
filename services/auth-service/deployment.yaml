@@ -19,8 +19,8 @@ spec:
             - containerPort: 50051
           env:
             - name: AUTH_DB_URL
-              value: "mongodb+srv://dirshadyasim:yasimjidhu-users@users.pzw95dw.mongodb.net/Auth-db?retryWrites=true&w=majority&appName=Users"
----
+              value: "mongodb+srv://dirshadyasim:yasimjidhu@users.pzw95dw.mongodb.net/?retryWrites=true&w=majority&appName=Users"
+---                   
 apiVersion: v1
 kind: Service
 metadata:
